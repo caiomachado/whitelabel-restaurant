@@ -48,14 +48,16 @@ function App() {
   }
 
   return (
-    <>
+    <div className="flex flex-col h-screen">
       <Header />
-      <Routes>
-        <Route path="/menu" element={<Menu />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/contact" element={<Contact />} />
-      </Routes>
-    </>
+      <main className="bg-white flex-1 flex items-center justify-center p-4 sm:px-0 sm:pb-9 sm:pt-3 sm:bg-[#EEEEEE]">
+        <Routes>
+          <Route path="/menu" element={<Menu />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/contact" element={<Contact />} />
+        </Routes>
+      </main>
+    </div>
   )
 }
 

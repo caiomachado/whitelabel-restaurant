@@ -59,7 +59,7 @@ export const Header = () => {
                         <MenuIcon isOpen={isOpen} />
                     </button>
 
-                    <ul className={twMerge("absolute flex flex-col pt-2 min-w-[120px] -right-1 top-10 transition-all bg-white shadow-xl scale-y-0 origin-top before:absolute before:w-2 before:h-2 before:bg-white before:rotate-45 before:-top-0.5 before:right-2", isOpen && 'scale-y-100')}>
+                    <ul className={twMerge("absolute flex flex-col pt-2 min-w-[120px] rounded-md -right-1 top-10 transition-all bg-white shadow-xl scale-y-0 origin-top before:absolute before:w-2 before:h-2 before:bg-white before:rotate-45 before:-top-0.5 before:right-2", isOpen && 'scale-y-100')}>
                         {navList.map((navItem) => {
                             return (
                                 <Link
