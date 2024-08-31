@@ -1,3 +1,5 @@
+import { AvailabilityType } from "../models/menu"
+
 export const restaurantMockData = {
     "id": 7602,
     "name": "BURGERS RESTAURANT",
@@ -56,7 +58,7 @@ export const menuMockData = {
                     "price": 33.00,
                     "position": 0,
                     "visible": 1,
-                    "availabilityType": "AVAILABLE_NOW",
+                    "availabilityType": AvailabilityType.AVAILABLE,
                     "sku": "I1625701",
                     "images": [
                         {
@@ -74,7 +76,7 @@ export const menuMockData = {
                     "price": 0.00,
                     "position": 1000,
                     "visible": 1,
-                    "availabilityType": "AVAILABLE_NOW",
+                    "availabilityType": AvailabilityType.AVAILABLE,
                     "sku": "I1625702",
                     "modifiers": [
                         {
@@ -90,7 +92,7 @@ export const menuMockData = {
                                     "maxChoices": 1,
                                     "position": 0,
                                     "visible": 1,
-                                    "availabilityType": "AVAILABLE_NOW",
+                                    "availabilityType": AvailabilityType.AVAILABLE,
                                     "available": true
                                 },
                                 {
@@ -100,7 +102,7 @@ export const menuMockData = {
                                     "maxChoices": 1,
                                     "position": 1000,
                                     "visible": 1,
-                                    "availabilityType": "AVAILABLE_NOW",
+                                    "availabilityType": AvailabilityType.AVAILABLE,
                                     "qty": 1,
                                     "available": true
                                 },
@@ -111,7 +113,7 @@ export const menuMockData = {
                                     "maxChoices": 1,
                                     "position": 2000,
                                     "visible": 1,
-                                    "availabilityType": "AVAILABLE_NOW",
+                                    "availabilityType": AvailabilityType.AVAILABLE,
                                     "available": true
                                 }
                             ]
@@ -133,7 +135,7 @@ export const menuMockData = {
                     "price": 33.00,
                     "position": 2000,
                     "visible": 1,
-                    "availabilityType": "AVAILABLE_NOW",
+                    "availabilityType": AvailabilityType.AVAILABLE,
                     "sku": "I1625703",
                     "images": [
                         {
@@ -164,7 +166,7 @@ export const menuMockData = {
                     "price": 13.00,
                     "position": 0,
                     "visible": 1,
-                    "availabilityType": "AVAILABLE_NOW",
+                    "availabilityType": AvailabilityType.AVAILABLE,
                     "sku": "I1625705",
                     "available": true
                 },
@@ -174,7 +176,7 @@ export const menuMockData = {
                     "alcoholic": 0,
                     "price": 13.00,
                     "position": 1000,
-                    "availabilityType": "AVAILABLE_NOW",
+                    "availabilityType": AvailabilityType.AVAILABLE,
                     "sku": "I1004123",
                     "available": true
                 },
@@ -184,7 +186,7 @@ export const menuMockData = {
                     "alcoholic": 0,
                     "price": 10.00,
                     "position": 2000,
-                    "availabilityType": "AVAILABLE_NOW",
+                    "availabilityType": AvailabilityType.AVAILABLE,
                     "sku": "I1004122",
                     "available": true
                 },
@@ -194,7 +196,7 @@ export const menuMockData = {
                     "alcoholic": 0,
                     "price": 12.00,
                     "position": 3000,
-                    "availabilityType": "AVAILABLE_NOW",
+                    "availabilityType": AvailabilityType.AVAILABLE,
                     "sku": "I1004123",
                     "available": true
                 }
@@ -218,7 +220,7 @@ export const menuMockData = {
                     "price": 18.90,
                     "position": 0,
                     "visible": 1,
-                    "availabilityType": "AVAILABLE_NOW",
+                    "availabilityType": AvailabilityType.AVAILABLE,
                     "images": [
                         {
                             "id": 108310,

@@ -3,6 +3,23 @@
 @tailwind utilities;
 
 * {
+  font-family: 'Roboto', sans-serif;
   min-width: 0;
   box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 0.5rem;
+  height: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: white;
+  border-radius: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  background-color: #4F372F;
 }
