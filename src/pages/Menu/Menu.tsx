@@ -6,6 +6,7 @@ import { useAppSelector, useAppDispatch } from "../../store/hooks";
 import { setMenuItems } from "../../store/reducers/menuReducer";
 import { twMerge } from "tailwind-merge";
 import { MenuContent } from "./components/MenuContent";
+import { Cart } from "./components/Cart";
 
 export const Menu = () => {
     const [searchValue, setSearchValue] = useState('');
@@ -46,14 +47,15 @@ export const Menu = () => {
             />
 
             <div className="bg-white sm:bg-[#F8F9FA] h-full flex gap-6 sm:p-5 lg:px-10 lg:py-8">
-                <div className={twMerge("bg-white flex flex-1 sm:px-4 sm:py-5", isLoadingMenu && 'items-center justify-center')}>
+                <div className={twMerge("bg-white flex w-full sm:w-[600px] sm:shadow-[0_2px_14px_0_rgba(0,0,0,0.14)] sm:px-4 sm:py-5", isLoadingMenu && 'items-center justify-center')}>
                     {isLoadingMenu ? (
                         <Loader size={40} />
                     ) : (
                         <MenuContent />
                     )}
                 </div>
-                <div className="hidden sm:flex">Cart section</div>
+
+                <Cart />
             </div>
         </section>
     )
