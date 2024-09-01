@@ -117,6 +117,95 @@ export const menuMockData = {
                                     "available": true
                                 }
                             ]
+                        },
+                        {
+                            "id": 1101203,
+                            "name": "Choose the bread",
+                            "minChoices": 1,
+                            "maxChoices": 1,
+                            "items": [
+                                {
+                                    "id": 74711236054,
+                                    "name": "Garlic bread",
+                                    "price": 33.00,
+                                    "maxChoices": 1,
+                                    "position": 0,
+                                    "visible": 1,
+                                    "availabilityType": AvailabilityType.AVAILABLE,
+                                    "available": true
+                                },
+                                {
+                                    "id": 7451376055,
+                                    "name": "Cheese bread",
+                                    "price": 35.00,
+                                    "maxChoices": 1,
+                                    "position": 1000,
+                                    "visible": 1,
+                                    "availabilityType": AvailabilityType.AVAILABLE,
+                                    "qty": 1,
+                                    "available": true
+                                },
+                                {
+                                    "id": 74711236056,
+                                    "name": "Normal bread",
+                                    "price": 37.00,
+                                    "maxChoices": 1,
+                                    "position": 2000,
+                                    "visible": 1,
+                                    "availabilityType": AvailabilityType.AVAILABLE,
+                                    "available": true
+                                }
+                            ]
+                        },
+                        {
+                            "id": 1101204,
+                            "name": "Add more toppings (optional)",
+                            "minChoices": 0,
+                            "maxChoices": 3,
+                            "items": [
+                                {
+                                    "id": 74761132054,
+                                    "name": "Bacon",
+                                    "price": 33.00,
+                                    "maxChoices": 1,
+                                    "position": 0,
+                                    "visible": 1,
+                                    "availabilityType": AvailabilityType.AVAILABLE,
+                                    "available": true
+                                },
+                                {
+                                    "id": 1117476055,
+                                    "name": "Tomato",
+                                    "price": 35.00,
+                                    "maxChoices": 1,
+                                    "position": 1000,
+                                    "visible": 1,
+                                    "availabilityType": AvailabilityType.AVAILABLE,
+                                    "qty": 1,
+                                    "available": true
+                                },
+                                {
+                                    "id": 123,
+                                    "name": "Olive",
+                                    "price": 35.00,
+                                    "maxChoices": 1,
+                                    "position": 1000,
+                                    "visible": 1,
+                                    "availabilityType": AvailabilityType.AVAILABLE,
+                                    "qty": 1,
+                                    "available": true
+                                },
+                                {
+                                    "id": 74760578886,
+                                    "name": "Egg",
+                                    "price": 37.00,
+                                    "maxChoices": 1,
+                                    "position": 2000,
+                                    "visible": 1,
+                                    "availabilityType": AvailabilityType.AVAILABLE,
+                                    "available": true
+                                }
+                            ]
                         }
                     ],
                     "images": [
