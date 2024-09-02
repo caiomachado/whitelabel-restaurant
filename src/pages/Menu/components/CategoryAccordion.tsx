@@ -6,12 +6,12 @@ import { updateAccordionsState } from "../../../store/reducers/menuReducer";
 import { AddToCartModal } from "./AddToCartModal";
 import { useState } from "react";
 
-type Props = {
+export type CategoryAccordionProps = {
     sectionContent: MenuSection;
     filteredValue: string;
 }
 
-export const CategoryAccordion = ({ sectionContent, filteredValue }: Props) => {
+export const CategoryAccordion = ({ sectionContent, filteredValue }: CategoryAccordionProps) => {
     const [isAddToCartModalOpen, setIsAddToCartModalOpen] = useState(false);
     const [selectedItem, setSelectedItem] = useState<MenuItem | null>(null);
     const accordionsState = useAppSelector((state) => state.menu.accordionsState);

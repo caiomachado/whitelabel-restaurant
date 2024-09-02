@@ -17,6 +17,7 @@ export const Counter = ({ count, size = 18, onDecrement, onIncrement, isDecremen
                 onClick={onDecrement}
                 className="bg-[#4F372F] rounded-full p-1.5 disabled:bg-[#DADADA]"
                 disabled={isDecrementDisabled}
+                data-testid="decrement-button"
             >
                 <Minus size={size} color={isDecrementDisabled ? "#5F5F5F" : "#FFFFFF"} />
             </button>
@@ -26,6 +27,7 @@ export const Counter = ({ count, size = 18, onDecrement, onIncrement, isDecremen
                 onClick={onIncrement}
                 className="bg-[#4F372F] rounded-full p-1.5 disabled:bg-[#DADADA]"
                 disabled={isIncrementDisabled}
+                data-testid="increment-button"
             >
                 <Plus size={size} color={isIncrementDisabled ? "#5F5F5F" : "#FFFFFF"} />
             </button>

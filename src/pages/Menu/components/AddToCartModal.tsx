@@ -16,13 +16,13 @@ import { useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../../store/hooks";
 import { addItemToCart } from "../../../store/reducers/cartReducer";
 
-type Props = {
+export type AddToCartModalProps = {
     open: boolean;
     onOpenChange: () => void;
     itemDetails: MenuItem;
 }
 
-export const AddToCartModal = ({ open, onOpenChange, itemDetails }: Props) => {
+export const AddToCartModal = ({ open, onOpenChange, itemDetails }: AddToCartModalProps) => {
     const [options, setOptions] = useState<CartItem>(() => ({
         id: itemDetails.id,
         itemId: itemDetails.id,
@@ -113,6 +113,7 @@ export const AddToCartModal = ({ open, onOpenChange, itemDetails }: Props) => {
                         type="button"
                         onClick={handleAddToOrder}
                         disabled={!areAllRequiredModifiersSelected}
+                        data-testid="add-to-order-button"
                     >
                         Add to Order • {currentVenue?.ccySymbol}{totalPrice.toFixed(2)}
                     </Button>

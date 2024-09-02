@@ -14,7 +14,7 @@ function App() {
 
   useEffect(() => {
     // This is only here to allow clearing the timeout since we can't rely on the api to respond
-    let timeout: number;
+    let timeout: ReturnType<typeof setTimeout>;
 
     async function getWhiteLabel() {
       await fetch('https://cdn-dev.preoday.com/challenge/venue/9', {
@@ -50,7 +50,7 @@ function App() {
   return (
     <div className="flex flex-col h-screen">
       <Header />
-      <main className="bg-white flex-1 flex items-center justify-center p-4 sm:px-0 sm:pb-9 sm:pt-3 sm:bg-[#EEEEEE]">
+      <main className="bg-white flex-1 flex justify-center p-4 sm:px-0 sm:pb-9 sm:pt-3 sm:bg-[#EEEEEE]">
         <Routes>
           <Route path="/menu" element={<Menu />} />
           <Route path="/login" element={<Login />} />

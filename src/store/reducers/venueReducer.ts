@@ -1,7 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { Venue } from "../../models/venue";
 
-const initialState: { venue: Venue | null } = {
+type ReducerState = {
+    venue: Venue | null
+}
+
+const initialState: ReducerState = {
     venue: null,
 };
 
