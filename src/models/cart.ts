@@ -1,4 +1,4 @@
-export type ModifierSelection = Record<number, SelectedModifierOption[]>
+export type ModifierSelection = Record<string, SelectedModifierOption[]>
 
 export type SelectedModifierOption = {
     name: string;
@@ -7,6 +7,7 @@ export type SelectedModifierOption = {
 
 export type CartItem = {
     id: number;
+    itemId: number;
     name: string;
     quantity: number;
     modifiers: ModifierSelection;

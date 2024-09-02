@@ -16,11 +16,15 @@ export const cartSlice = createSlice({
         addItemToCart: (state, action: PayloadAction<CartItem>) => {
             state.cart.push(action.payload)
         },
+        clearCart: (state) => {
+            state.cart = []
+        },
         incrementItemQuantity: (state, action: PayloadAction<number>) => {
             const updatedCart = state.cart.map((cartItem, index) => {
                 if (index === action.payload) {
                     return {
                         ...cartItem,
+                        unitPrice: cartItem.unitPrice + (cartItem.unitPrice / cartItem.quantity),
                         quantity: cartItem.quantity + 1,
                     }
                 }
@@ -34,6 +38,7 @@ export const cartSlice = createSlice({
                 if (index === action.payload) {
                     return cartItem.quantity === 1 ? undefined : {
                         ...cartItem,
+                        unitPrice: cartItem.unitPrice - (cartItem.unitPrice / cartItem.quantity),
                         quantity: cartItem.quantity - 1,
                     }
                 }
@@ -45,6 +50,6 @@ export const cartSlice = createSlice({
     }
 })
 
-export const { addItemToCart, incrementItemQuantity, decrementItemQuantity } = cartSlice.actions;
+export const { addItemToCart, clearCart, incrementItemQuantity, decrementItemQuantity } = cartSlice.actions;
 
 export default cartSlice.reducer;

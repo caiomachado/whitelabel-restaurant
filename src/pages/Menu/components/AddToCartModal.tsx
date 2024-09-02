@@ -25,6 +25,7 @@ type Props = {
 export const AddToCartModal = ({ open, onOpenChange, itemDetails }: Props) => {
     const [options, setOptions] = useState<CartItem>(() => ({
         id: itemDetails.id,
+        itemId: itemDetails.id,
         name: itemDetails.name,
         unitPrice: itemDetails.price ?? 0,
         quantity: 1,
@@ -33,6 +34,16 @@ export const AddToCartModal = ({ open, onOpenChange, itemDetails }: Props) => {
     const currentVenue = useAppSelector((state) => state.venue.venue);
     const dispatch = useAppDispatch();
     const hasImageToDisplay = !!itemDetails.images?.length;
+    const allRequiredModifiersMinChoices = itemDetails?.modifiers && itemDetails?.modifiers?.reduce<Record<string, number>>((requiredMinChoices, modifier) => {
+        if (modifier?.minChoices && modifier?.minChoices > 0) {
+            requiredMinChoices[modifier.id] = modifier.minChoices;
+        }
+        return requiredMinChoices;
+    }, {});
+    const areAllRequiredModifiersSelected = allRequiredModifiersMinChoices ? Object.entries(allRequiredModifiersMinChoices).every(([modifierId, minChoices]) => {
+        return options.modifiers?.[modifierId]?.length >= minChoices;
+    }) : true;
+
     const modifiersTotalPrice = Object.values(options.modifiers).flat().reduce((acc, cur) => {
         acc += cur.price;
         return acc;
@@ -52,6 +63,7 @@ export const AddToCartModal = ({ open, onOpenChange, itemDetails }: Props) => {
     function handleAddToOrder() {
         dispatch(addItemToCart({
             ...options,
+            id: new Date().getTime(),
             unitPrice: totalPrice
         }))
         onOpenChange();
@@ -59,11 +71,11 @@ export const AddToCartModal = ({ open, onOpenChange, itemDetails }: Props) => {
 
     return (
         <Dialog open={open} onOpenChange={onOpenChange} modal>
-            <DialogContent className="w-full h-full overflow-auto max-w-full flex flex-col bg-white p-0 border-none gap-0 md:h-auto md:overflow-hidden md:w-[480px]">
+            <DialogContent className="w-full h-full overflow-auto max-w-full flex flex-col bg-white p-0 border-none gap-0 md: md:h-auto md:overflow-hidden md:w-[480px]">
                 {hasImageToDisplay && (
                     <DialogHeader className="space-y-0">
-                        <DialogTitle className="hidden">{itemDetails?.name}</DialogTitle>
-                        <DialogDescription className="hidden">{itemDetails?.description}</DialogDescription>
+                        <DialogTitle className="hidden">{itemDetails?.name ?? 'No name provided'}</DialogTitle>
+                        <DialogDescription className="hidden">{itemDetails?.description ?? 'No description provided'}</DialogDescription>
                         <img className="w-full h-[265px] md:h-[320px]" src={itemDetails.images?.[0]?.image} alt={`${itemDetails.name} Image`} />
                     </DialogHeader>
                 )}
@@ -100,6 +112,7 @@ export const AddToCartModal = ({ open, onOpenChange, itemDetails }: Props) => {
                         fullSize
                         type="button"
                         onClick={handleAddToOrder}
+                        disabled={!areAllRequiredModifiersSelected}
                     >
                         Add to Order • {currentVenue?.ccySymbol}{totalPrice.toFixed(2)}
                     </Button>

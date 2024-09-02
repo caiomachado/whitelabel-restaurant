@@ -34,10 +34,16 @@ export const menuSlice = createSlice({
                 ...state.accordionsState,
                 [action.payload.key]: action.payload.isOpen,
             }
+        },
+        expandAllAccordions: (state) => {
+            state.accordionsState = state?.accordionsState && Object.keys(state.accordionsState).reduce<AccordionsState>((acc, accordionName) => {
+                acc[accordionName] = true;
+                return acc;
+            }, {})
         }
     }
 })
 
-export const { setMenuItems, updateAccordionsState } = menuSlice.actions;
+export const { setMenuItems, updateAccordionsState, expandAllAccordions } = menuSlice.actions;
 
 export default menuSlice.reducer;

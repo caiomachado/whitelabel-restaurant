@@ -2,7 +2,11 @@ import { useAppSelector } from "../../../store/hooks";
 import { CategoryAccordion } from "./CategoryAccordion";
 import { NavContent } from "./NavContent";
 
-export const MenuContent = () => {
+type Props = {
+    filteredValue: string;
+}
+
+export const MenuContent = ({ filteredValue }: Props) => {
     const menuItems = useAppSelector((state) => state.menu.menuItems);
 
     return (
@@ -10,7 +14,7 @@ export const MenuContent = () => {
             <NavContent />
 
             {menuItems?.sections?.map((section) => {
-                return <CategoryAccordion key={section.id} sectionContent={section} />
+                return <CategoryAccordion key={section.id} sectionContent={section} filteredValue={filteredValue} />
             })}
         </div>
     )

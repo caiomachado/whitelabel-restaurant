@@ -34,7 +34,7 @@ export const ModifierBlock = ({ modifier, handleOnSelectOption, optionsSelected 
             <div className="flex flex-col py-4 px-6 bg-[#F8F9FA]">
                 <h2 className="font-bold text-[#464646] text-base leading-[18px]">{modifier?.name}</h2>
                 <p className="font-normal text-[#5F5F5F] text-base leading-[18px]">
-                    Select {modifier?.maxChoices} option{modifier?.maxChoices && modifier?.maxChoices !== 1 && 's'}
+                    Select {modifier?.minChoices === 0 && (modifier?.maxChoices && modifier?.maxChoices > 1) && 'up to'} {modifier?.maxChoices} option{modifier?.maxChoices && modifier?.maxChoices !== 1 && 's'}
                 </p>
             </div>
 
