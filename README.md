@@ -10,7 +10,8 @@ No further steps shall be taken to set it up.
 # Notes
 
 Although the instructions were to use only the endpoint and not mock the data, I had to mock the data because I was having cors issues when calling that endpoint therfore not being able to actually retrieve the data from the API, I left the api call as I would do in a normal project there just for displaying it but I mocked the data in the code to allow the application to function without any problems, I also took the opportunity to update some of the mock items in the menu to test new interactions such as selecting other modifying options.
-### Important: I would not make api calls directly in the useEffect hook, there's no problem with it but I would rather use `react-query` instead to handle these calls because of the caching and all the other functionalities that it gives you.
+### Important: 
+I would not make api calls directly in the useEffect hook, there's no problem with it but I would rather use `react-query` instead to handle these calls because of the caching and all the other functionalities that it gives you.
 
 # Technologies
 
