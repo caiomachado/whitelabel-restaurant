@@ -1,0 +1,41 @@
+{
+    "button": {
+        "send": "Enviar",
+        "login": "Entrar"
+    },
+    "header": {
+        "menu": "MENU",
+        "login": "ENTRAR",
+        "contact": "CONTATO"
+    },
+    "contact": {
+        "title": "Fale conosco",
+        "email-placeholder": "Seu email",
+        "textarea-placeholder": "Conta para a gente como podemos te ajudar"
+    },
+    "login": {
+        "username-placeholder": "Usuário",
+        "password-placeholder": "Senha"
+    },
+    "menu": {
+        "search-placeholder": "Procurar itens no menu",
+        "empty-category-accordion": "Não encontramos nenhum item com esse filtro.",
+        "cart": {
+            "title": "Carrinho",
+            "cart-button-mobile": "Seu carrinho • {{itemCount}} {{isPlural}}",
+            "description": "Conteúdo do carrinho",
+            "with-modifiers-text": "Com",
+            "subtotal": "Sub total",
+            "total": "Total:",
+            "checkout-button": "Pagar agora",
+            "empty-cart-text": "Seu carrinho está vazio"
+        },
+        "add-to-cart-modal": {
+            "add-button": "Adicionar ao pedido",
+            "select-options": "Selecione {{conditionText}} {{maxNumberOfChoices}} {{optionsText}}"
+        }
+    },
+    "footer": {
+        "all-rights": "Todos os direitos reservados"
+    }
+}

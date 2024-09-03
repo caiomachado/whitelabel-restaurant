@@ -3,17 +3,12 @@ import { NavLink, Link, NavLinkProps, useLocation } from "react-router-dom"
 import { twMerge } from "tailwind-merge"
 import { useAppSelector } from "../store/hooks"
 import { MenuIcon } from "./MenuIcon"
+import { useTranslation } from "react-i18next"
 
 type NavLink = {
     path: string;
     name: string;
 }
-
-const navLinks: NavLink[] = [
-    { path: '/menu', name: 'MENU' },
-    { path: '/login', name: 'ENTRAR' },
-    { path: '/contact', name: 'CONTATO' },
-]
 
 const CustomNavLink = ({ children, ...rest }: NavLinkProps) => (
     <NavLink
@@ -28,6 +23,13 @@ export const Header = () => {
     const [isOpen, setIsOpen] = useState(false);
     const currentVenue = useAppSelector((state) => state.venue.venue);
     const location = useLocation();
+    const { t } = useTranslation();
+
+    const navLinks: NavLink[] = useMemo(() => ([
+        { path: '/menu', name: t('header.menu') },
+        { path: '/login', name: t('header.login') },
+        { path: '/contact', name: t('header.contact') },
+    ]), [t])
 
     const { currentPath, navList } = useMemo(() => {
         return navLinks.reduce<{ currentPath: NavLink, navList: NavLink[] }>((acc, cur) => {
@@ -39,7 +41,7 @@ export const Header = () => {
 
             return acc;
         }, { currentPath: { path: '', name: '' }, navList: [] })
-    }, [location.pathname])
+    }, [location.pathname, navLinks])
 
     return (
         <header style={{ backgroundColor: currentVenue?.webSettings?.navBackgroundColour }}>

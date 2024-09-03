@@ -2,6 +2,7 @@ import { ChangeEvent } from "react";
 import { ItemModifier } from "../../../models/menu"
 import { SelectedModifierOption } from "../../../models/cart";
 import { useAppSelector } from "../../../store/hooks";
+import { useTranslation } from "react-i18next";
 
 export type ModifierProps = {
     modifier?: ItemModifier;
@@ -10,6 +11,7 @@ export type ModifierProps = {
 }
 
 export const ModifierBlock = ({ modifier, handleOnSelectOption, optionsSelected }: ModifierProps) => {
+    const { t } = useTranslation();
     const currentVenue = useAppSelector((state) => state.venue.venue);
     const hasReachedMaxSelection = optionsSelected.length === modifier?.maxChoices;
     const allowMultipleSelections = Boolean(modifier?.maxChoices && modifier?.maxChoices > 1);
@@ -34,7 +36,11 @@ export const ModifierBlock = ({ modifier, handleOnSelectOption, optionsSelected 
             <div className="flex flex-col py-4 px-6 bg-[#F8F9FA]">
                 <h2 className="font-bold text-[#464646] text-base leading-[18px]">{modifier?.name}</h2>
                 <p className="font-normal text-[#5F5F5F] text-base leading-[18px]">
-                    Select {modifier?.minChoices === 0 && (modifier?.maxChoices && modifier?.maxChoices > 1) && 'up to'} {modifier?.maxChoices} option{modifier?.maxChoices && modifier?.maxChoices !== 1 && 's'}
+                    {t('menu.add-to-cart-modal.select-options', {
+                        conditionText: modifier?.minChoices === 0 && (modifier?.maxChoices && modifier?.maxChoices > 1) ? 'up to' : '',
+                        maxNumberOfChoices: modifier?.maxChoices,
+                        optionsText: modifier?.maxChoices && modifier?.maxChoices !== 1 ? 'options' : 'option'
+                    })}
                 </p>
             </div>
 

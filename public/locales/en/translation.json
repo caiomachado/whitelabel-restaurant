@@ -1,0 +1,41 @@
+{
+    "button": {
+        "send": "Send",
+        "login": "Login"
+    },
+    "header": {
+        "menu": "MENU",
+        "login": "LOGIN",
+        "contact": "CONTACT"
+    },
+    "contact": {
+        "title": "Talk to us",
+        "email-placeholder": "Your email",
+        "textarea-placeholder": "Tell us how we can help you"
+    },
+    "login": {
+        "username-placeholder": "Username",
+        "password-placeholder": "Password"
+    },
+    "menu": {
+        "search-placeholder": "Search for menu items",
+        "empty-category-accordion": "No items found in this section with that filter value.",
+        "cart": {
+            "title": "Cart",
+            "cart-button-mobile": "Your cart • {{itemCount}} {{isPlural}}",
+            "description": "Cart content",
+            "with-modifiers-text": "With",
+            "subtotal": "Sub total",
+            "total": "Total:",
+            "checkout-button": "Checkout now",
+            "empty-cart-text": "Your cart is empty"
+        },
+        "add-to-cart-modal": {
+            "add-button": "Add to order",
+            "select-options": "Select {{conditionText}} {{maxNumberOfChoices}} {{optionsText}}"
+        }
+    },
+    "footer": {
+        "all-rights": "All rights reserved"
+    }
+}

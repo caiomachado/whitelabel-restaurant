@@ -3,7 +3,7 @@ import { Routes, Route, useNavigate } from "react-router-dom";
 import { restaurantMockData } from "./mocks";
 import { setVenue } from "./store/reducers/venueReducer";
 import { useAppDispatch, useAppSelector } from "./store/hooks";
-import { Header, Loader } from "./components";
+import { Header, Loader, Footer } from "./components";
 import { Menu, Login, Contact } from "./pages";
 
 function App() {
@@ -57,6 +57,7 @@ function App() {
           <Route path="/contact" element={<Contact />} />
         </Routes>
       </main>
+      <Footer />
     </div>
   )
 }

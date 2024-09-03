@@ -65,39 +65,39 @@ describe('Cart', () => {
 
     it('should render correctly', () => {
         renderUI();
-        const sectionName = screen.getByText('Carrinho');
+        const sectionName = screen.getByText('menu.cart.title');
         expect(sectionName).toBeVisible();
     })
 
     it('should display empty cart text if there are no items selected', () => {
         renderUI({ cart: { cart: [] } });
-        const emptyText = screen.getByText('Seu carrinho está vazio');
+        const emptyText = screen.getByText('menu.cart.empty-cart-text');
         expect(emptyText).toBeVisible();
     })
 
     it('should update total value correctly if you increase the quantity of a selected item', () => {
         renderUI();
-        const [, totalPrice] = screen.getAllByText('R$76.00');
+        const [, totalPrice] = screen.getAllByText(/76.00/i);
         expect(totalPrice).toBeVisible();
         const [firstItemIncrement] = screen.getAllByTestId('increment-button');
         fireEvent.click(firstItemIncrement);
-        expect(totalPrice).toHaveTextContent('86.00');
+        expect(totalPrice).toHaveTextContent(/86.00/i);
     })
 
     it('should update total value correctly if you decrease the quantity of a selected item', () => {
         renderUI();
-        const [, totalPrice] = screen.getAllByText('R$76.00');
+        const [, totalPrice] = screen.getAllByText(/76.00/i);
         expect(totalPrice).toBeVisible();
         const [, secondItemDecrement] = screen.getAllByTestId('decrement-button');
         fireEvent.click(secondItemDecrement);
-        expect(totalPrice).toHaveTextContent('R$43.00');
+        expect(totalPrice).toHaveTextContent(/43.00/i);
     })
 
     it('should update total value correctly if you decrease the quantity of a selected item', () => {
         renderUI();
-        const checkoutButton = screen.getByText('Checkout now');
+        const checkoutButton = screen.getByText('menu.cart.checkout-button');
         fireEvent.click(checkoutButton);
-        const emptyText = screen.getByText('Seu carrinho está vazio');
+        const emptyText = screen.getByText('menu.cart.empty-cart-text');
         expect(emptyText).toBeVisible();
     })
 })

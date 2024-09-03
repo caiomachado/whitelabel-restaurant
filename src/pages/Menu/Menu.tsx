@@ -9,6 +9,7 @@ import { MenuContent } from "./components/MenuContent";
 import { Cart } from "./components/Cart";
 import { CartModal } from "./components/CartModal";
 import { debounce } from 'lodash';
+import { useTranslation } from "react-i18next";
 
 export const Menu = () => {
     const [searchValue, setSearchValue] = useState('');
@@ -17,6 +18,7 @@ export const Menu = () => {
     const menuItems = useAppSelector((state) => state.menu.menuItems);
     const cart = useAppSelector((state) => state.cart.cart);
     const dispatch = useAppDispatch();
+    const { t } = useTranslation();
 
     const debouncedOnChange = debounce((newValue) => {
         setSearchValue(newValue);
@@ -48,9 +50,15 @@ export const Menu = () => {
         }
     }, [dispatch, menuItems])
 
+    useEffect(() => {
+        if (!cart.length && isCartModalOpen) {
+            setIsCartModalOpen(false)
+        }
+    }, [cart.length, isCartModalOpen])
+
     return (
         <>
-            <section className={twMerge("w-full bg-white h-full flex flex-col gap-1.5 sm:w-[90%] sm:bg-transparent lg:w-4/5 xl:w-[65%]", cart.length > 0 && 'pb-20 sm:pb-12 md:pb-0')}>
+            <section className={twMerge("w-full bg-white h-full flex flex-col gap-1.5 sm:w-[90%] sm:bg-transparent lg:w-4/5 xl:w-[65%]", cart.length > 0 && 'pb-12 sm:pb-8 md:pb-0')}>
                 <Input
                     type="text"
                     placeholder="Search menu items"
@@ -73,13 +81,13 @@ export const Menu = () => {
                 </div>
 
                 {cart.length > 0 && (
-                    <div className="w-full max-w-[345px] pb-6 px-4 fixed bottom-0 left-1/2 -translate-x-1/2 md:hidden">
+                    <div className="w-full max-w-[345px] pb-6 px-4 fixed bottom-6 left-1/2 -translate-x-1/2 md:hidden">
                         <Button
                             fullSize
                             type="button"
                             onClick={() => setIsCartModalOpen(true)}
                         >
-                            Your basket • {cart.length} item{cart.length !== 1 && 's'}
+                            {t('menu.cart.cart-button-mobile', { itemCount: cart.length, isPlural: cart.length !== 1 ? 'items' : 'item' })}
                         </Button>
                     </div>
                 )}

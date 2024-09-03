@@ -15,6 +15,7 @@ import { CartItem, SelectedModifierOption } from "../../../models/cart";
 import { useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../../store/hooks";
 import { addItemToCart } from "../../../store/reducers/cartReducer";
+import { useTranslation } from "react-i18next";
 
 export type AddToCartModalProps = {
     open: boolean;
@@ -31,6 +32,7 @@ export const AddToCartModal = ({ open, onOpenChange, itemDetails }: AddToCartMod
         quantity: 1,
         modifiers: {}
     }));
+    const { t } = useTranslation();
     const currentVenue = useAppSelector((state) => state.venue.venue);
     const dispatch = useAppDispatch();
     const hasImageToDisplay = !!itemDetails.images?.length;
@@ -113,9 +115,8 @@ export const AddToCartModal = ({ open, onOpenChange, itemDetails }: AddToCartMod
                         type="button"
                         onClick={handleAddToOrder}
                         disabled={!areAllRequiredModifiersSelected}
-                        data-testid="add-to-order-button"
                     >
-                        Add to Order • {currentVenue?.ccySymbol}{totalPrice.toFixed(2)}
+                        {t('menu.add-to-cart-modal.add-button')} • {currentVenue?.ccySymbol}{totalPrice.toFixed(2)}
                     </Button>
                 </DialogFooter>
             </DialogContent>

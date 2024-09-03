@@ -5,6 +5,7 @@ import { useAppDispatch, useAppSelector } from "../../../store/hooks";
 import { updateAccordionsState } from "../../../store/reducers/menuReducer";
 import { AddToCartModal } from "./AddToCartModal";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 export type CategoryAccordionProps = {
     sectionContent: MenuSection;
@@ -18,6 +19,7 @@ export const CategoryAccordion = ({ sectionContent, filteredValue }: CategoryAcc
     const currentVenue = useAppSelector((state) => state.venue.venue);
     const cart = useAppSelector((state) => state.cart.cart);
     const dispatch = useAppDispatch();
+    const { t } = useTranslation();
     const isCurrentAccordionOpen = accordionsState?.[sectionContent?.name];
     const filteredItems = sectionContent.items.filter((item) => item.name.toLowerCase().includes(filteredValue.toLowerCase()));
 
@@ -75,7 +77,7 @@ export const CategoryAccordion = ({ sectionContent, filteredValue }: CategoryAcc
                                 </div>
                             );
                         }) : (
-                            <p>No items found in this section with that filter value.</p>
+                            <p>{t('menu.empty-category-accordion')}</p>
                         )}
                     </>
                 )}

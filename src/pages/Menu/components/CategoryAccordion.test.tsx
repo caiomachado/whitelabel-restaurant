@@ -105,7 +105,7 @@ describe('CategoryAccordion', () => {
     it('should display an empty search text if no items match the filteredValue', () => {
         renderUI({ filteredValue: 'just testing a random value' });
         const firstItem = screen.queryByText(mockData.items[0].name);
-        const emptyText = screen.getByText('No items found in this section with that filter value.');
+        const emptyText = screen.getByText('menu.empty-category-accordion');
         expect(firstItem).not.toBeInTheDocument();
         expect(emptyText).toBeVisible();
     })

@@ -75,12 +75,12 @@ describe('AddToCartModal', () => {
     it('should display correct total value if you increase the quantity', () => {
         renderUI();
         const incrementButton = screen.getByTestId('increment-button');
-        const totalPrice = screen.getByText('Add to Order • R$33.00');
+        const totalPrice = screen.getByRole('button', { name: /33.00/i });
         const count = screen.getByText('1');
         expect(count).toHaveTextContent('1');
         fireEvent.click(incrementButton);
         expect(count).toHaveTextContent('2');
-        expect(totalPrice).toHaveTextContent('Add to Order • R$66.00');
+        expect(totalPrice).toHaveTextContent(/66.00/i);
     })
 
     it('should disable decrement button if quantity is 1', () => {
@@ -93,7 +93,7 @@ describe('AddToCartModal', () => {
 
     it('should close modal if Add to order button is clicked', () => {
         renderUI();
-        const addToOrderButton = screen.getByTestId('add-to-order-button');
+        const addToOrderButton = screen.getByRole('button', { name: /menu.add-to-cart-modal.add-button/i });
         fireEvent.click(addToOrderButton);
         expect(onOpenChangeFn).toHaveBeenCalled();
     })
