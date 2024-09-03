@@ -38,9 +38,9 @@ export const CartModal = ({ open, onOpenChange }: Props) => {
                 </DialogHeader>
 
                 <div className={twMerge("w-full bg-white")}>
-                    {cart.map((cartItem, index) => {
+                    {cart.map((cartItem) => {
                         return (
-                            <CartItem key={cartItem?.id} cartItem={cartItem} currentIndex={index} />
+                            <CartItem key={cartItem?.id} cartItem={cartItem} />
                         )
                     })}
 

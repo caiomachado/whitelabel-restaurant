@@ -61,7 +61,7 @@ export const Menu = () => {
             <section className={twMerge("w-full bg-white h-full flex flex-col gap-1.5 sm:w-[90%] sm:bg-transparent lg:w-4/5 xl:w-[65%]", cart.length > 0 && 'pb-12 sm:pb-8 md:pb-0')}>
                 <Input
                     type="text"
-                    placeholder="Search menu items"
+                    placeholder={t('menu.search-placeholder')}
                     className="outline-none border-none w-full leading-[18px] sm:leading-5"
                     icon={<Search size={20} color="#8A94A4" />}
                     iconSide="left"

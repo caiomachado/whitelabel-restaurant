@@ -22,9 +22,9 @@ export const Cart = () => {
                     <p className="text-[#464646] leading-[18px] font-normal">{t('menu.cart.empty-cart-text')}</p>
                 ) : (
                     <>
-                        {cart.map((cartItem, index) => {
+                        {cart.map((cartItem) => {
                             return (
-                                <CartItem key={cartItem?.id} cartItem={cartItem} currentIndex={index} />
+                                <CartItem key={cartItem?.id} cartItem={cartItem} />
                             )
                         })}
 

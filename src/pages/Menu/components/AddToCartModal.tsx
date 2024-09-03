@@ -116,7 +116,10 @@ export const AddToCartModal = ({ open, onOpenChange, itemDetails }: AddToCartMod
                         onClick={handleAddToOrder}
                         disabled={!areAllRequiredModifiersSelected}
                     >
-                        {t('menu.add-to-cart-modal.add-button')} • {currentVenue?.ccySymbol}{totalPrice.toFixed(2)}
+                        {t('menu.add-to-cart-modal.add-button')} • {totalPrice.toLocaleString(currentVenue?.locale, {
+                            style: 'currency',
+                            currency: currentVenue?.ccy
+                        })}
                     </Button>
                 </DialogFooter>
             </DialogContent>

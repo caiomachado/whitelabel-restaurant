@@ -50,7 +50,10 @@ export const ModifierBlock = ({ modifier, handleOnSelectOption, optionsSelected 
                         <div className="flex flex-col">
                             <h3 className="font-bold text-[#464646] text-base leading-[18px]">{modifierOption?.name}</h3>
                             <span className="font-normal text-[#5F5F5F] text-base leading-[18px]">
-                                {currentVenue?.ccySymbol}{modifierOption?.price?.toFixed(2)}
+                                {modifierOption?.price?.toLocaleString(currentVenue?.locale, {
+                                    style: 'currency',
+                                    currency: currentVenue?.ccy
+                                })}
                             </span>
                         </div>
 

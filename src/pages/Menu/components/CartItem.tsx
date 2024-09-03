@@ -6,10 +6,9 @@ import { useTranslation } from 'react-i18next';
 
 export type CartItemProps = {
     cartItem: CartItem;
-    currentIndex: number;
 }
 
-export const Item = ({ cartItem, currentIndex }: CartItemProps) => {
+export const Item = ({ cartItem }: CartItemProps) => {
     const currentVenue = useAppSelector((state) => state.venue.venue);
     const dispatch = useAppDispatch();
     const { t } = useTranslation();
@@ -29,13 +28,16 @@ export const Item = ({ cartItem, currentIndex }: CartItemProps) => {
                 <Counter
                     count={cartItem?.quantity}
                     size={12}
-                    onDecrement={() => dispatch(decrementItemQuantity(currentIndex))}
-                    onIncrement={() => dispatch(incrementItemQuantity(currentIndex))}
+                    onDecrement={() => dispatch(decrementItemQuantity(cartItem?.id))}
+                    onIncrement={() => dispatch(incrementItemQuantity(cartItem?.id))}
                 />
             </div>
 
             <span className="font-medium text-[#121212] text-base leading-[18px] flex-shrink-0">
-                {currentVenue?.ccySymbol}{cartItem?.unitPrice?.toFixed(2)}
+                {cartItem?.unitPrice?.toLocaleString(currentVenue?.locale, {
+                    style: 'currency',
+                    currency: currentVenue?.ccy
+                })}
             </span>
         </div>
     )

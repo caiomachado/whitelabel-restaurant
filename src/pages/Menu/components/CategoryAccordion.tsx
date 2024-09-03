@@ -57,22 +57,33 @@ export const CategoryAccordion = ({ sectionContent, filteredValue }: CategoryAcc
                     <>
                         {filteredItems?.length > 0 ? filteredItems?.map((sectionItem) => {
                             return (
-                                <div className="flex gap-4" key={sectionItem.id} onClick={() => handleViewItemDetails(sectionItem)}>
+                                <div className="flex gap-4 transition rounded-md hover:cursor-pointer hover:shadow-xl" key={sectionItem.id} onClick={() => handleViewItemDetails(sectionItem)}>
                                     <div className="flex flex-col gap-1 flex-1">
                                         <h2 className="text-[#121212] font-medium leading-[18px] inline-flex gap-2.5 items-center">
                                             {selectedItemsCount?.[sectionItem?.id] && (
                                                 <div className="w-[18px] h-[18px] bg-[#4F372F] text-center rounded-md">
-                                                    <span className="text-sm text-white leading-4">{selectedItemsCount[sectionItem?.id]}</span>
+                                                    <span className="text-sm text-white leading-4">
+                                                        {selectedItemsCount[sectionItem?.id]}
+                                                    </span>
                                                 </div>
                                             )}
                                             {sectionItem?.name}
                                         </h2>
                                         <p className="text-[#464646] font-light leading-[18px] max-w-[85%] text-ellipsis text-nowrap whitespace-nowrap overflow-hidden">{sectionItem?.description}</p>
-                                        <span className="text-[#464646] font-medium leading-[18px]">{currentVenue?.ccySymbol}{sectionItem?.price?.toFixed(2)}</span>
+                                        <span className="text-[#464646] font-medium leading-[18px]">
+                                            {sectionItem?.price?.toLocaleString(currentVenue?.locale, {
+                                                style: 'currency',
+                                                currency: currentVenue?.ccy
+                                            })}
+                                        </span>
                                     </div>
 
                                     {sectionItem?.images?.length && sectionItem?.images?.length > 0 && (
-                                        <img className="h-[85px] w-[128px] rounded-md object-cover" src={sectionItem?.images?.[0]?.image} alt={`${sectionItem?.name} image`} />
+                                        <img
+                                            className="h-[85px] w-[128px] rounded-md object-cover"
+                                            src={sectionItem?.images?.[0]?.image}
+                                            alt={`${sectionItem?.name} image`}
+                                        />
                                     )}
                                 </div>
                             );

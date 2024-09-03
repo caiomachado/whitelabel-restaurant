@@ -20,8 +20,8 @@ export const cartSlice = createSlice({
             state.cart = []
         },
         incrementItemQuantity: (state, action: PayloadAction<number>) => {
-            const updatedCart = state.cart.map((cartItem, index) => {
-                if (index === action.payload) {
+            const updatedCart = state.cart.map((cartItem) => {
+                if (cartItem.id === action.payload) {
                     return {
                         ...cartItem,
                         unitPrice: cartItem.unitPrice + (cartItem.unitPrice / cartItem.quantity),
@@ -34,8 +34,8 @@ export const cartSlice = createSlice({
             state.cart = updatedCart;
         },
         decrementItemQuantity: (state, action: PayloadAction<number>) => {
-            const updatedCart = state.cart.map((cartItem, index) => {
-                if (index === action.payload) {
+            const updatedCart = state.cart.map((cartItem) => {
+                if (cartItem.id === action.payload) {
                     return cartItem.quantity === 1 ? undefined : {
                         ...cartItem,
                         unitPrice: cartItem.unitPrice - (cartItem.unitPrice / cartItem.quantity),
