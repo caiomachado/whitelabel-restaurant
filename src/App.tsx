@@ -52,6 +52,7 @@ function App() {
       <Header />
       <main className="bg-white flex-1 flex justify-center p-4 sm:px-0 sm:pb-9 sm:pt-3 sm:bg-[#EEEEEE]">
         <Routes>
+          <Route path="/" element={<Menu />} />
           <Route path="/menu" element={<Menu />} />
           <Route path="/login" element={<Login />} />
           <Route path="/contact" element={<Contact />} />
